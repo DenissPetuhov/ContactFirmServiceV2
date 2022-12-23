@@ -4,13 +4,13 @@ namespace ContactFirmService.BLL
 {
     public class Firm
     {
-        private string[] NameFlds;
-        private int positionflds;
-        public Firm(string nameFirm, string[] nameFidls)
+
+      
+        public Firm(string nameFirm, string[] nameFilds)
         {
             Name = nameFirm;
 
-            NameFlds = nameFidls;
+
             subFirms.Add(
                 new SubFirm(
                     "Main SubFirm",
@@ -20,6 +20,15 @@ namespace ContactFirmService.BLL
                         Name = "MainType"
                     },
                     true));
+
+            usrFields = new Dictionary<string, string>()
+            {
+                { nameFilds[0], "" },
+                { nameFilds[1], "" },
+                { nameFilds[2], "" },
+                { nameFilds[3], "" },
+                { nameFilds[4], "" }
+           };
 
         }
 
@@ -45,7 +54,7 @@ namespace ContactFirmService.BLL
             }
         }
 
-        private Dictionary<string, string>? usrFields;
+        private Dictionary<string, string> usrFields;
         public List<SubFirm> subFirms = new List<SubFirm>();
 
         public bool AddCont(Contact contact)
@@ -86,21 +95,17 @@ namespace ContactFirmService.BLL
                false
                ));
         }
-
-        public Dictionary<string, string> GetField()
+        public string GetField(string key)
         {
-            return usrFields;
+
+            return usrFields[key];
 
         }
-
-        public void SetField(string[] flds)
+        public void SetField(string key, string value)
         {
-            Dictionary<string, string> dic = new Dictionary<string, string>();
-            for (positionflds = 0; positionflds <= flds.Length-1; positionflds++)
-            {
-                dic.Add(NameFlds[positionflds], flds[positionflds]);
-            }
-            usrFields = dic;
+
+            usrFields[key] = value;
+
         }
         public bool RenameField(string key, string value)
         {

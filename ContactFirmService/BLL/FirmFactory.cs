@@ -23,10 +23,12 @@ namespace ContactFirmService.BLL
         private const int fldscount = 5;
         public string[] nameMain = new string[fldscount]
         {"Имя","Фамилия","Отчество","Возраст","Телефон"};
-        public string[] flds = new string[fldscount];
+       
         public Firm Create(string nameFirm)
         {
+
             Firm firm = new Firm(nameFirm, nameMain);
+
             return firm;
 
         }
