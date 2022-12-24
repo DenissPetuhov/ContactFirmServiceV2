@@ -51,7 +51,7 @@ namespace ContactFirmSreviceTests
         public void Firmfild()
         {
             // Arrange
-            string[] nameMain = new string[5]{"Имя","Фамилия","Отчество","Возраст","Телефон"};
+           
             string[] flds1 = new string[] { "Влад", "Совельев", "Евшеньевичь", "flds5", "flds6" };
             string[] flds2 = new string[] { "Денис", "Иванов", "Владимирович", "flds5", "flds6" };
             FirmFactory firmFactory = FirmFactory.GetInstance();
@@ -59,14 +59,12 @@ namespace ContactFirmSreviceTests
             Firm firm2 = firmFactory.Create("вторая фирма");
             for(int i = 0; i < flds1.Length; i++)
             {
-                firm1.SetField(nameMain[i],flds1[i]);
-                firm2.SetField(nameMain[i], flds2[i]);
+                firm1.SetField(firmFactory.nameMain[i],flds1[i]);
+                firm2.SetField(firmFactory.nameMain[i],flds2[i]);
             }
-         
-         
             // Act
-            string result1 = firm1.GetField(nameMain[1]);
-            string result2 = firm2.GetField(nameMain[1]);
+            string result1 = firm1.GetField(firmFactory.nameMain[1]);
+            string result2 = firm2.GetField(firmFactory.nameMain[1]);
             // Assert
             Assert.NotEqual(result2, result1);
         }
